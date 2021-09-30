@@ -1,0 +1,4 @@
+[submodule "mina2047/nmc5050"]
+	path = mina2047/nmc5050
+	url = git@github.com:mina2047/nmc5050.git
+	branch = main
