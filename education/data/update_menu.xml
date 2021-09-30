@@ -1,7 +1,0 @@
-<odoo>
-  <data>
-    <function model='event.event' name='updateMenuItem'/>
-  </data>
-
-
-</odoo>
