@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 {
-    'name': 'Inventory Ledger Report',
+    'name': 'Inventory Ledger Report.',
     'version': '13.0',
     'price': 149,
     'currency': 'EUR',
