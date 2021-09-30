@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Training",
+    'name': "Training.",
     'summary': """
         Manage Your Entire Training Operation""",
     'description': """
