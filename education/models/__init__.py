@@ -14,8 +14,8 @@ from . import course_topic
 from . import event_mail
 from . import course
 from . import course_mail
-#from . import document
-#from . import attachment
+# from . import document
+from . import attachment
 from . import program
 from . import instructor_rate
 from . import purchase_order

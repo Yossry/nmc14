@@ -8,7 +8,7 @@
             <field name="arch" type="xml">
                 <data>
                   <xpath expr="//field[@name='product_id']" position="after">
-                    <field name="event_id" attrs="{'invisible':[('applied_on', '!=', '4_event')],'required':[('applied_on', '=', '4_event')]}" options="{'no_create':1, 'no_open': 1}" domain="[                         ('event_ticket_ids.product_id','=', %(event_sale.product_product_event_product_template)d),('date_end','&gt;=',time.strftime('%Y-%m-%d 00:00:00')),'|', ('company_id', '=', False), ('company_id', '=', company_id)]"/>
+                    <field name="event_id" attrs="{'invisible':[('applied_on', '!=', '4_event')],'required':[('applied_on', '=', '4_event')]}" options="{'no_create':1, 'no_open': 1}" domain="[('event_ticket_ids.product_id','=', %(event_sale.event_sale_product_template_form)d),('date_end','&gt;=',time.strftime('%Y-%m-%d 00:00:00')),'|', ('company_id', '=', False), ('company_id', '=', company_id)]"/>
                   </xpath>
                 </data>
             </field>

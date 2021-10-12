@@ -20,9 +20,9 @@
                     <field name="manager" attrs="{'invisible': [['is_instructor','=',False]]}"/>
                 </xpath>
 
-                <xpath expr="//field[@name='timesheet_manager_id']" position="after">
-                    <field name="registration_number" attrs="{'invisible': [['is_instructor','=',False]]}"/>
-                </xpath>
+<!--                <xpath expr="//field[@name='timesheet_manager_id']" position="after">-->
+<!--                    <field name="registration_number" attrs="{'invisible': [['is_instructor','=',False]]}"/>-->
+<!--                </xpath>-->
 
                 <data>
                   <xpath expr="//field[@name='department_id']" position="attributes">
@@ -108,9 +108,9 @@
                     <field name="course_ids" domain="[('program_id', '=', program_id), ('type_id', '=', event_type_id)]" options="{'no_create': True, 'no_quick_create': True}"  widget='many2many_tags'/>
                     <field name='first_session_id'/>
                 </xpath>
-                <xpath expr="//field[@name='department_id']" position="after">
-	                <field name="signed_agreement"  invisible='1'/>
-	            </xpath>
+<!--                <xpath expr="//field[@name='department_id']" position="after">-->
+<!--	                <field name="signed_agreement"  invisible='1'/>-->
+<!--	            </xpath>-->
             </field>
         </record>
         

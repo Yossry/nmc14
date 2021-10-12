@@ -9,7 +9,7 @@ class EmployeeContract(models.Model):
     event_type_id = fields.Many2one('event.type', string="Event Type")
     partner_id = fields.Many2one('res.partner', string="Account")
     display_partner_id = fields.Boolean('Display Account', compute='_compute_display_parter_id')
-    signed_agreement = fields.Many2one('documents.document', string="Signed Agreement")
+    # signed_agreement = fields.Many2one('documents.document', string="Signed Agreement")
     first_session_id = fields.Many2one('event.track', string='First session', compute="_compute_session")
 
     @api.constrains('employee_id', 'state', 'kanban_state', 'date_start', 'date_end')
@@ -63,8 +63,9 @@ class EmployeeContract(models.Model):
             'course_ids': self.compute_courses(employee_id),
         })
         if 'signed_agreement' in vals:
-            agreement = self.env['documents.document'].browse(vals['signed_agreement']).write(
-                {'folder_id': employee_id.folder_id.id, 'employee_id': employee_id.id})
+            print("x")
+            # agreement = self.env['documents.document'].browse(vals['signed_agreement']).write(
+            #     {'folder_id': employee_id.folder_id.id, 'employee_id': employee_id.id})
         return record
 
     def write(self, vals):

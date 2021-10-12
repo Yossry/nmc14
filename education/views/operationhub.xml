@@ -444,7 +444,7 @@
                 <tree decoration-bf="message_unread==True" decoration-muted="state=='cancel'" decoration-info="state in ('wait','confirmed')" string="Purchase Order">
                     <field name="message_unread" invisible="1" />
                     <field name="name" string="Reference" />
-                    <field name="date_order" />
+                    <field name="date_order"/>
                     <field name="partner_id" string="Instructor" />
                     <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}" />
                     <field name="date_planned" invisible="context.get('quotation_only', False)" />
@@ -474,7 +474,7 @@
                         </div>
                         <group>
                             <group>
-                                <label for="date_begin" string="Date" />
+                                <label for="start_date" string="Date" />
                                 <div class="o_row">
                                     <field name="start_date" widget="daterange" nolabel="1" class="oe_inline" options="{'related_end_date': 'end_date'}" />
                                     <i class="fa fa-long-arrow-right mx-2" aria-label="Arrow icon" title="Arrow" />
@@ -717,7 +717,7 @@
                         </div>
                         <group>
                             <group>
-                                <label for="date_begin" string="Date"/>
+                                <label for="start_date" string="Date"/>
                                 <div class="o_row">
                                     <field name="start_date" widget="daterange" nolabel="1" class="oe_inline" options="{'related_end_date': 'end_date'}"/>
                                     <i class="fa fa-long-arrow-right mx-2" aria-label="Arrow icon" title="Arrow"/>
@@ -1001,9 +1001,7 @@
                   <xpath expr="//field[@name='state']" position="attributes">
                     <attribute name='statusbar_visible'>draft,open</attribute>
                   </xpath>
-
-
-                  <xpath expr="//button[@name='button_reg_close']" position="replace" />
+<!--                  <xpath expr="//button[@name='button_reg_close']" position="replace"/>-->
                 </data>
             </field>
         </record>

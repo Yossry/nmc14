@@ -117,6 +117,7 @@ class Event(models.Model):
         nbSessions = course.nb_sessions
         generatedSessions = 0
         schedules = self.schedule_ids
+        DateFrom = False
         if (not schedules):
             raise ValidationError(_(
                 "Please fill the schedules before generating sessions"))
@@ -371,7 +372,7 @@ class Event(models.Model):
             for revenue in revenues:
                 if (revenue.order_id.company_id.id != record.company_id.id):
                     totalRevenue = (
-                                               totalRevenue + revenue.price_unit * revenue.product_uom_qty) * revenue.currency_id.rate
+                                           totalRevenue + revenue.price_unit * revenue.product_uom_qty) * revenue.currency_id.rate
 
                 else:
                     totalRevenue = totalRevenue + revenue.price_unit * revenue.product_uom_qty

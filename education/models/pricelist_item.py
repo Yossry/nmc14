@@ -8,7 +8,7 @@ class ProductPriceListItem(models.Model):
     is_region = fields.Boolean(related='pricelist_id.company_id.is_region')
     local_price = fields.Float('Price in region')
     event_id = fields.Many2one('event.event', 'Event')
-    applied_on = fields.Selection(selection_add=[('4_event', "Event")])
+    applied_on = fields.Selection(selection_add=[('4_event', "Event")], ondelete={'4_event': 'set default'})
 
     def _get_pricelist_item_name_price(self):
         res = super(ProductPriceListItem, self)._get_pricelist_item_name_price()

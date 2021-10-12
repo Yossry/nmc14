@@ -223,10 +223,10 @@
 									<tr>
 										<td class="text-left">
 											Tuition Fees - <b><span t-field="ticket.name"/></b>
-											<t t-if="ticket.deadline">
-												<br />
-												<small>Sales end: <span t-field="ticket.deadline" t-options="{&quot;widget&quot;: &quot;date&quot;}" /></small>
-											</t>
+<!--											<t t-if="ticket.deadline">-->
+<!--												<br />-->
+<!--												<small>Sales end: <span t-field="ticket.deadline" t-options="{&quot;widget&quot;: &quot;date&quot;}" /></small>-->
+<!--											</t>-->
 										</td>
 										<td class="text-left"><span t-field="ticket.price" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
 										<td class="text-left">

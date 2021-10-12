@@ -112,9 +112,9 @@
                         <group string='Bank Accounts'>
                             <field name='bank_account_ids' context="{'default_company_id': active_id, 'default_type': 'bank', 'form_view_ref': 'account.view_account_bank_journal_form'}" nolabel='1'>
                                 <field name='name' string='Bank Name'/>
-                                <field name='bank_acc_number'/>
-                                <field name='iban'/>
-                                <field name='swift_code'/>
+<!--                                <field name='bank_acc_number'/>-->
+<!--                                <field name='iban'/>-->
+<!--                                <field name='swift_code'/>-->
                             </field>
                         </group>
                     </page>
@@ -172,9 +172,9 @@
                                 <tree string="Bank Accounts">
                                     <field name="sequence" widget="handle" />
                                     <field name="name" />
-                                    <field name="bank_acc_number" />
-                                    <field name="swift_code" />
-                                    <field name="iban" />
+<!--                                    <field name="bank_acc_number" />-->
+<!--                                    <field name="swift_code" />-->
+<!--                                    <field name="iban" />-->
                                     <field name="company_id" />
                                 </tree>
                             </field>

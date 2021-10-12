@@ -276,7 +276,7 @@ class SaleOrder(models.Model):
                                                         default_type='out_invoice')._get_default_journal()
         if not journal:
             raise UserError(_('Please define an accounting sales journal for the company %s (%s).') % (
-            self.company_id.name, self.company_id.id))
+                self.company_id.name, self.company_id.id))
 
         invoice_vals = {
             'ref': self.client_order_ref or '',
@@ -420,7 +420,7 @@ class SaleOrder(models.Model):
             invoice_vals_list = new_invoice_vals_list
 
         # raise UserError(str(invoice_vals_list))
-        moves = self.env['account.move'].sudo().with_context(default_type='out_invoice').create(invoice_vals_list)
+        moves = self.env['account.move'].sudo().with_context(default_move_type='out_invoice').create(invoice_vals_list)
         if final:
             moves.sudo().filtered(lambda m: m.amount_total < 0).action_switch_invoice_into_refund_credit_note()
 

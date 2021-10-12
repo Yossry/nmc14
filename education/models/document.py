@@ -6,6 +6,6 @@ class Document(models.Model):
     program_attachment_id = fields.Many2one('program.attachment')
     company_id = fields.Many2one('res.company',string="Region")
     employee_id = fields.Many2one('hr.employee',string='Instructor',domain="[('is_instructor','=',True)]")
-    #attachment_id = fields.Many2one('program.attachment')
+    attachment_id = fields.Many2one('program.attachment')
    
 

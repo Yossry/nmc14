@@ -4,7 +4,7 @@ from odoo import models, fields, _
 class DeliveryCarrier(models.Model):
     _inherit = 'delivery.carrier'
     product_ids = fields.One2many('shipping.price', 'carrier_id', string="Products")
-    delivery_type = fields.Selection(selection_add=[('products', 'Based on Products')])
+    delivery_type = fields.Selection(selection_add=[('products', 'Based on Products')], ondelete={'products': 'set default'})
 
     def products_rate_shipment(self, order):
         carrier = self._match_address(order.partner_shipping_id)

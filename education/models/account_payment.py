@@ -45,9 +45,43 @@ class Payment(models.Model):
 		if journal:
 			self.journal_id = journal.id
 
+
+	@api.onchange('journal_id')
+	def _onchange_journal(self):
+		if self.journal_id:
+			self.currency_id = self.journal_id.currency_id or self.company_id.currency_id
+			# Set default payment method (we consider the first to be the default one)
+			payment_methods = self.payment_type == 'outbound' and self.journal_id.inbound_payment_method_ids or self.journal_id.outbound_payment_method_ids
+			self.payment_method_id = payment_methods and payment_methods[0] or False
+			# Set payment method domain (restrict to methods enabled for the journal and to selected payment type)
+			payment_type = self.payment_type in ('outbound', 'transfer') and 'outbound' or 'outbound'
+			return {
+				'domain': {'payment_method_id': [('payment_type', '=', payment_type), ('id', 'in', payment_methods.ids)]}}
+		return {}
+
+
+	@api.onchange('currency_id')
+	def _onchange_currency(self):
+		if self.currency_id and self.journal_id and self.payment_date:
+			advance_amount = abs(self._compute_payment_amount(self.currency_id, self.journal_id, self.payment_date))
+			self.advance_amount = advance_amount
+		else:
+			self.advance_amount = 0.0
+
+		if self.journal_id:  # TODO: only return if currency differ?
+			return
+
+		# Set by default the first liquidity journal having this currency if exists.
+		domain = [('type', 'in', ('bank', 'cash')),
+				  ('currency_id', '=', self.currency_id.id),
+				  ('company_id', '=', self.company_id.id), ]
+		journal = self.env['account.journal'].search(domain, limit=1)
+		if journal:
+			return {'value': {'journal_id': journal.id}}
+
 	@api.onchange('payment_type')
 	def _onchange_payment_type(self):
-		if not self.invoice_ids and not self.partner_type:
+		if not self.reconciled_invoice_ids and not self.partner_type:
 			if self.payment_type == 'inbound':
 				self.partner_type = 'customer'
 

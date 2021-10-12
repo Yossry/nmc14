@@ -10,12 +10,12 @@ class SaleOrderLine(models.Model):
     session_id = fields.Many2one('event.track', string='Session')
     course_id = fields.Many2one('course','Course')
     event_track_seats_availability = fields.Selection(
-        related='session_id.event_id.seats_availability',
+        related='session_id.event_id.state',
         string='Seats Availavility',
         readonly=True
     )
     event_session_seats_availability = fields.Selection(
-        related='event_id.seats_availability',
+        related='event_id.state',
         string='Seats Availavility',
         readonly=True,
     )

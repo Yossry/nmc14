@@ -33,19 +33,20 @@ class Employees(models.Model):
 
     def show_related_documents(self):
         ctx = {}
-        ctx['default_employee_id'] = self.id
-        ctx['default_folder_id'] = self.folder_id.id if self.folder_id else False
-        res = {
-            'type': 'ir.actions.act_window',
-            'name': _('Documents'),
-            'view_mode': 'tree,kanban,form',
-            'res_model': 'documents.document',
-            'domain': [('id', 'in', self.document_ids.ids)],
-            'target': 'current',
-            'context': ctx,
-        }
-
-        return res
+        print("x")
+        # ctx['default_employee_id'] = self.id
+        # ctx['default_folder_id'] = self.folder_id.id if self.folder_id else False
+        # res = {
+        #     'type': 'ir.actions.act_window',
+        #     'name': _('Documents'),
+        #     'view_mode': 'tree,kanban,form',
+        #     'res_model': 'documents.document',
+        #     'domain': [('id', 'in', self.document_ids.ids)],
+        #     'target': 'current',
+        #     'context': ctx,
+        # }
+        #
+        # return res
 
     def _compute_courses(self):
         for record in self:

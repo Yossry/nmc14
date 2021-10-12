@@ -15,7 +15,7 @@
 
                     <field name='program_id' options="{'no_create':True, 'no_open':True}" attrs="{'invisible': [('skill_type', '!=', 'specialization')]}"/>
                     <field name='course_ids' options="{'no_create':True}" widget='many2many_tags' domain="[('program_id','=',program_id)]" attrs="{'invisible': [('skill_type', '!=', 'specialization')]}"/>
-                    <field name='topic_ids' options="{'no_create':True}" widget='many2many_tags' domain="[('topic_id','=',course_ids)]" attrs="{'invisible': [('skill_type', '!=', 'specialization')]}"/>
+                    <field name='topic_ids' options="{'no_create':True}" widget='many2many_tags' attrs="{'invisible': [('skill_type', '!=', 'specialization')]}"/>
 
                     <field name='education' attrs="{'invisible': [('skill_type', '!=', 'education')]}"/>
                     <field name='major_id' attrs="{'invisible': [('skill_type', '!=', 'education')]}"/>

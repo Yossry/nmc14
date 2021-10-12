@@ -71,7 +71,7 @@ class Course(models.Model):
 
     def generate_price(self):
         regionIds = []
-        self.region = False
+        self.region_ids = False
         date = datetime.now().strftime('%Y-%m-%d')
         companyPrices = self.company_prices
         self.env['company.price'].search([('course_region_id', '=', self.id)]).unlink()

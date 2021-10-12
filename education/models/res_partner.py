@@ -38,7 +38,7 @@ class ResPartner(models.Model):
     email = fields.Char('Email')
     website = fields.Char('Website')
     title = fields.Many2one('res.partner.title', string="Title")
-    supplier_invoice_ids = fields.One2many('account.move', 'partner_id', 'Customer move lines', domain=[('type', 'in', ['in_invoice','in_refund']),('state', 'in', ['posted'])]) 
+    supplier_invoice_ids = fields.One2many('account.move', 'partner_id', 'Customer move lines', domain=[('move_type', 'in', ['in_invoice','in_refund']),('state', 'in', ['posted'])])
     balance_invoice_ids = fields.One2many('account.move', 'partner_id', 'Customer move lines', domain=[('state', 'in', ['posted'])]) 
     event_ids = fields.Many2many('event.event',string='Attended Events')
 
@@ -175,7 +175,7 @@ class ResPartner(models.Model):
     university = fields.Char('University')
     date_activation = fields.Date('Activation Date',store=True)
 
-    name = fields.Char(index=True,readonly=False,required=True)
+    # name = fields.Char(index=True,readonly=False,required=True)
 
 
     _sql_constraints = [
@@ -225,7 +225,7 @@ class ResPartner(models.Model):
                 final_initial_bal = 0.0 
 
                 in_bal = account_invoice_obj.search([('partner_id','=',record.id), \
-                    ('type', 'in', ['out_invoice','out_refund']), ('state', 'in', ['posted']), \
+                    ('move_type', 'in', ['out_invoice','out_refund']), ('state', 'in', ['posted']), \
                     ('invoice_date_due', '<', from_date)])
                 
                 for inv in in_bal :
@@ -236,7 +236,7 @@ class ResPartner(models.Model):
                     ('partner_type', '=', 'customer')])
 
                 for pay in in_pay_bal :
-                    if not pay.invoice_ids:
+                    if not pay.reconciled_invoice_ids:
                         final_initial_bal -= pay.amount
 
                 if final_initial_bal:
@@ -278,7 +278,7 @@ class ResPartner(models.Model):
                 for payment in payments.sorted(key=lambda r: r.name):
                     credit_amount = 0.0
                     debit_amount = 0.0
-                    if not payment.invoice_ids:
+                    if not payment.reconciled_invoice_ids:
                         for move in payment.move_line_ids:
                             if move.account_id.internal_type == 'receivable':
                                 if not move.full_reconcile_id:
