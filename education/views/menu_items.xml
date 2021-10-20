@@ -1,6 +1,6 @@
 <odoo>
     <data>
-        <menuitem id="training_operations_menu1" name="Operation Hub" web_icon="event,static/description/icon.png"
+        <menuitem id="training_operations_menu1" name="Academy" web_icon="event,static/description/icon.png"
                   sequence="1"/>
         <menuitem id="training_operation_management" name="Operations Management" parent="training_operations_menu1"
                   sequence="1"/>

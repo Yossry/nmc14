@@ -13,13 +13,12 @@
                     <attribute name="readonly">1</attribute>
                 </xpath>
 
-                <xpath expr="//button[@name='%(event.act_event_registration_from_event)d']" position="before">
+                <xpath expr="//field[@name='stage_id']" position="before">
                     <button name="generate_sessions" type="object" string="Generate Sessions" class="oe_highlight"
                             attrs="{'invisible': [('track_count', '&gt;', 0)]}"/>
                     <button name="generate_certificates" type="object" string="Generate Certificates"
                             attrs="{'invisible': [('certificates_count', '&gt;', 0)]}"/>
                 </xpath>
-
 
                 <div name="button_box" position="inside">
                     <button name="action_view_certificates" type="object" class="oe_stat_button"
@@ -34,10 +33,10 @@
                 </xpath>
 
 
-<!--                <xpath expr="//button[@name='button_done']" position="attributes">-->
-<!--                    <attribute name="invisible">1</attribute>-->
-<!--                </xpath>-->
-                <div name="button_box" position="inside"></div>
+                <!--                <xpath expr="//button[@name='button_done']" position="attributes">-->
+                <!--                    <attribute name="invisible">1</attribute>-->
+                <!--                </xpath>-->
+                <div name="button_box" position="inside"/>
                 <xpath expr="//field[@name='organizer_id']" position="before">
                     <field name="organizer_ids" string="Instructors" widget="many2many_tags"/>
                     <field name="program_id" options="{'no_create': True, 'no_quick_create': True}"/>
@@ -71,30 +70,30 @@
                     <attribute name="invisible">1</attribute>
                 </xpath>
 
-<!--                <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='event_ticket_ids']/tree[1]/field[@name='product_id']"-->
-<!--                       position="attributes">-->
-<!--                    <attribute name="optional">hide</attribute>-->
-<!--                    <attribute name="options">{"no_create":true,"no_open":true}</attribute>-->
-<!--                </xpath>-->
-<!--                <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='event_ticket_ids']/tree[1]/field[@name='product_id']"-->
-<!--                       position="after">-->
-<!--                    <field name="mapped_item_ids" widget="many2many_tags" optional="hide"-->
-<!--                           options="{'no_create': True, 'no_open':True, 'no_quick_create': True}"/>-->
-<!--                    <field name="tax_ids" widget="many2many_tags" optional="hide"-->
-<!--                           options="{'no_create': True, 'no_open':True, 'no_quick_create': True}"/>-->
-<!--                    <field name="amount_taxed" optional="hide"/>-->
-<!--                </xpath>-->
+                <!--                <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='event_ticket_ids']/tree[1]/field[@name='product_id']"-->
+                <!--                       position="attributes">-->
+                <!--                    <attribute name="optional">hide</attribute>-->
+                <!--                    <attribute name="options">{"no_create":true,"no_open":true}</attribute>-->
+                <!--                </xpath>-->
+                <!--                <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='event_ticket_ids']/tree[1]/field[@name='product_id']"-->
+                <!--                       position="after">-->
+                <!--                    <field name="mapped_item_ids" widget="many2many_tags" optional="hide"-->
+                <!--                           options="{'no_create': True, 'no_open':True, 'no_quick_create': True}"/>-->
+                <!--                    <field name="tax_ids" widget="many2many_tags" optional="hide"-->
+                <!--                           options="{'no_create': True, 'no_open':True, 'no_quick_create': True}"/>-->
+                <!--                    <field name="amount_taxed" optional="hide"/>-->
+                <!--                </xpath>-->
 
-<!--                <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='event_ticket_ids']/tree[1]/field[@name='price']"-->
-<!--                       position="after">-->
-<!--                    <field name='currency_id' invisible='1'/>-->
-<!--                </xpath>-->
+                <!--                <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='event_ticket_ids']/tree[1]/field[@name='price']"-->
+                <!--                       position="after">-->
+                <!--                    <field name='currency_id' invisible='1'/>-->
+                <!--                </xpath>-->
 
-<!--                <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='event_ticket_ids']/tree[1]/field[@name='price']"-->
-<!--                       position="attributes">-->
-<!--                    <attribute name="widget">monetary</attribute>-->
-<!--                    <attribute name="options">{'currency_field': 'currency_id'}</attribute>-->
-<!--                </xpath>-->
+                <!--                <xpath expr="//form[1]/sheet[1]/notebook[1]/page[1]/field[@name='event_ticket_ids']/tree[1]/field[@name='price']"-->
+                <!--                       position="attributes">-->
+                <!--                    <attribute name="widget">monetary</attribute>-->
+                <!--                    <attribute name="options">{'currency_field': 'currency_id'}</attribute>-->
+                <!--                </xpath>-->
 
                 <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
                     <page string="Schedule">
