@@ -65,6 +65,13 @@ class Event(models.Model):
     attempt_count = fields.Float('Nb of attempts', compute="compute_attempt")
     passing_rate = fields.Float('Passing Rate (%)', compute="compute_attempt")
 
+    @api.constrains('date_begin', 'date_end')
+    def _check_closing_date(self):
+        for event in self:
+            if event.date_end and event.date_begin:
+                if event.date_end < event.date_begin:
+                    raise ValidationError(_('The closing date cannot be earlier than the beginning date.'))
+
     def compute_currency_usd(self):
         for record in self:
             record['currency_usd'] = self.env.ref('base.USD').id
@@ -159,7 +166,8 @@ class Event(models.Model):
                             'partner_biography': instructor.address_id.website_description
                         })
                     generatedSessions = generatedSessions + 1
-            self.write({'date_end': DateFrom})
+            if DateFrom:
+               self.write({'date_end': DateFrom})
 
     def _compute_instructors(self):
         instructorArray = []
@@ -283,7 +291,11 @@ class Event(models.Model):
 
     def _compute_certificates_count(self):
         for event in self:
-            event.certificates_count = self.env['certificate'].search_count([('event_id', '=', event.id)])
+            cer_obj =  self.env['certificate'].search_count([('event_id', '=', event.id)])
+            if cer_obj:
+               event.certificates_count = cer_obj
+            else:
+                event.certificates_count = 0
 
     def _compute_unconfirmed_qty(self):
         for event in self:

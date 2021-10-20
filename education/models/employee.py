@@ -151,3 +151,9 @@ class Employees(models.Model):
             if self.country_id.phone_code:
                 self.work_phone = '+' + str(self.country_id.phone_code) + ' '
                 self.mobile_phone = '+' + str(self.country_id.phone_code) + ' '
+
+class HrEmployeePublic(models.Model):
+    _inherit = 'hr.employee.public'
+
+    timesheet_manager_id = fields.Many2one('res.users', string='Timesheet',
+        help="User responsible of timesheet validation. Should be Timesheet Manager.")
